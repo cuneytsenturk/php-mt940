@@ -2,6 +2,7 @@
 
 namespace Kingsquare\Parser\Banking\Mt940\Engine;
 
+use Kingsquare\Banking\Transaction\Type;
 use Kingsquare\Parser\Banking\Mt940\Engine;
 
 class Wise extends Engine
@@ -81,10 +82,10 @@ class Wise extends Engine
    protected function parseTransactionType()
    {
        static $map = [
-            'FEX' => Type::BANK_TRANSFER,
             'CHG' => Type::BANK_COSTS,
             'MSC' => Type::BANK_INTEREST,
-            'TRF' => Type::UNKNOWN,
+            'TRF' => Type::TRANSFER,
+            'FEX' => Type::UNKNOWN,
        ];
 
        $code = $this->parseTransactionCode();
